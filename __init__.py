@@ -13,7 +13,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
     CORS(app)
 
-    from .routes import api
+    from routes import api
     app.register_blueprint(api)
 
     with app.app_context():
