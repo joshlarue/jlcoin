@@ -1,8 +1,10 @@
 # jlcoin
 
 ## Required packages
-All required packages can be installed using:
-```bash pip install -r requirements.txt```
+All required packages can be installed using
+```bash
+pip install -r requirements.txt
+```
 
 ## routes.py
 contains flask routes for all events and pages
