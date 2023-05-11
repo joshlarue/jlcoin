@@ -1,55 +1,55 @@
 body {
-    background-color: #6699CC;
+    background-color: #1d2e3e;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 h1 {
     text-align: left;
     padding-left: 20px;
+    color: #cecece;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-.descript {
+#description {
+    font-family: 'Source Sans Pro', sans-serif;
     margin: 0;
     position: absolute;
     top: 50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    color: #002c58;
+    color: #cecece;
 }
 
-.lr {
-    display: inline-block;
-    margin: 10px;
-    padding: 10px 20px;
-    text-decoration: none;
-    background-color: rgb(87, 123, 255);
-    color: black;
-    border: 2px solid white;
-    border-radius: 5px;
-    transition: 0.3s;
+#auth {
     position: absolute;
     top: 10px;
     right: 10px;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-.lr:hover {
+.auth-links {
+    display: inline-block;
+    background-color: #544caf;
+    color: white;
+    border: 1px solid #254ca1;
+    padding: 10px 20px;
+    margin: 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.auth-links:hover {
     border-color: #ffffff;
     color: #ffffff;
     background-color: #4da6ff;
 }
 
-a[href="/auth/register"] {
-    right: 10px;
-}
-
-a[href="/auth/login"] {
-    right: 125px;
-}
-
 form {
+    font-family: 'Source Sans Pro', sans-serif;
     width: 300px;
     margin: 0 auto;
     padding: 20px;

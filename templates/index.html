@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jlcoin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <h1>jlcoin</h1> <!-- make this a left aligned header -->
-    <p><a class = "lr" href="/auth/login">Log in</a></p> <!-- make login and register buttons on the upper right hand side -->
-    <p><a class = "lr" href="/auth/register">Register</a></p>
-    <h2 class="descript">About jlcoin</h2>
+    <div id="auth">
+        <a class = "auth-links" href="/auth/login">Log in</a> <!-- make login and register buttons on the upper right hand side -->
+        <a class = "auth-links" href="/auth/register">Register</a>
+    </div>
+    <div id="description">
+        <h2 class="descript">About jlcoin</h2>
+    </div>
     <br>
 </body>
 </html>
