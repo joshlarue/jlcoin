@@ -9,38 +9,31 @@ def create_app():
     app = Flask(__name__)
     ## add a better secret key than that buster
     ## for dev purposes only
-    api = Blueprint('api', __name__)
 
     app.config['SECRET_KEY'] = 'jlcoin'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
     CORS(app)
-    app.register_blueprint(api)
+    
+    from routes import main as main_blueprint
+    app.register_blueprint(main_blueprint)
 
     with app.app_context():
         db.init_app(app)
         import models
         db.create_all()
 
+    from auth import auth as auth_blueprint
+    app.register_blueprint(auth_blueprint)
+    
 
-    #app.register_blueprint(app)
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
 
-    from auth import auth
-    app.register_blueprint(auth, url_prefix='/auth')
-    
-
-
+#reimplement, taken into extensions
     @login_manager.user_loader
     def load_user(user_id):
         from models import User
         return User.query.get(int(user_id))
 
-    #login_manager.init_app(app)
-
-    #app.add_url_rule('/mine', 'mine', mine, methods=['GET'])
-    #app.add_url_rule('/blocks', 'get_blocks', get_blocks, methods=['GET'])
-    #app.add_url_rule('/txion', 'transactions', transactions, methods=['POST'])
-    #node.register_blueprint(auth, url_prefix ='/auth')
     return app

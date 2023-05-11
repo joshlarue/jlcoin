@@ -9,10 +9,11 @@ import requests
 from flask_login import LoginManager, login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
 from auth import auth
-from __init__ import db, login_manager
+from __init__ import db
 #from runblockchain import app
 from models import User
-from __init__ import api
+
+main = Blueprint('main', __name__)
 
 
 #node = Flask(__name__)
@@ -25,8 +26,6 @@ from __init__ import api
 
 #node.register_blueprint(auth)
 
-#api = Blueprint('api', __name__)
-#moved to extensions
 
 class Block:
     def __init__(self, index, timestamp, data, previous_hash):
@@ -55,7 +54,7 @@ this_node_transactions = []
 peer_nodes = []
 mining = True
 
-@api.route('/txion', methods=['POST'])
+@main.route('/txion', methods=['POST'])
 def transactions():
     if request.method == 'POST':
         new_txion = request.get_json()
@@ -83,7 +82,7 @@ def proof_of_work(last_proof):
         incrementor += 1
     return incrementor
 
-@api.route('/mine', methods = ['GET'])
+@main.route('/mine', methods = ['GET'])
 def mine():
     last_block = blockchain[len(blockchain) -1]
     last_proof = last_block.data['proof-of-work']
@@ -124,7 +123,7 @@ def mine():
         "hash": last_block_hash
     })
 
-@api.route('/blocks', methods=['GET'])
+@main.route('/blocks', methods=['GET'])
 def get_blocks():
     chain_to_send = []
     for block in blockchain:
@@ -153,7 +152,7 @@ def consensus():
             longest_chain = chain
     blockchain = longest_chain
 
-@api.route('/')
+@main.route('/')
 def index():
     if current_user.is_authenticated:
         return render_template('index.html', username=current_user.username)
