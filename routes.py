@@ -1,18 +1,18 @@
 import hashlib as hasher
 import datetime as date
 import json
-from flask import Flask, Blueprint
+from flask import Flask, Blueprint, redirect, url_for
 from flask import request
 from flask import render_template
 from flask_cors import CORS
 import requests
 from flask_login import LoginManager, login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
-#from auth import auth
+from auth import auth
 from __init__ import db, login_manager
 #from runblockchain import app
-#from models import User
-from extensions import api
+from models import User
+from __init__ import api
 
 
 #node = Flask(__name__)
@@ -158,4 +158,4 @@ def index():
     if current_user.is_authenticated:
         return render_template('index.html', username=current_user.username)
     else:
-        return render_template('register.html')
+        return redirect(url_for('auth.register'))

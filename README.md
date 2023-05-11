@@ -23,3 +23,6 @@ run this file to start the application
 
 ## blockchain.py
 outdated file, previous and much less functional version of routes.py
+
+## extensions.py
+helps resolve circular import errors
