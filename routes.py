@@ -10,22 +10,9 @@ from flask_login import LoginManager, login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
 from auth import auth
 from __init__ import db
-#from runblockchain import app
 from models import User
 
 main = Blueprint('main', __name__)
-
-
-#node = Flask(__name__)
-#node.config['SECRET_KEY'] = 'jlcoin'
-#node.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
-#CORS(node)
-
-#login_manager.init_app(node)
-#login_manager.login_view = 'auth_login'
-
-#node.register_blueprint(auth)
-
 
 class Block:
     def __init__(self, index, timestamp, data, previous_hash):
@@ -154,7 +141,10 @@ def consensus():
 
 @main.route('/')
 def index():
-    if current_user.is_authenticated:
-        return render_template('index.html', username=current_user.username)
-    else:
-        return redirect(url_for('auth.register'))
+    return render_template('index.html')
+    
+    # old logic
+    #if current_user.is_authenticated:
+    #    return render_template('index.html', username=current_user.username)
+    #else:
+    #    return redirect(url_for('auth.register'))
