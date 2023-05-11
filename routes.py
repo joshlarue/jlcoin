@@ -12,6 +12,7 @@ from flask_sqlalchemy import SQLAlchemy
 from __init__ import db, login_manager
 #from runblockchain import app
 #from models import User
+from extensions import api
 
 
 #node = Flask(__name__)
