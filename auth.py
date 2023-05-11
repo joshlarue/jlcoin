@@ -43,4 +43,4 @@ def login():
 def logout():
     logout_user()
     #originally url_for index
-    return redirect(url_for('auth.login'))
+    return render_template('index.html')
