@@ -24,7 +24,8 @@ from __init__ import db, login_manager
 
 #node.register_blueprint(auth)
 
-api = Blueprint('api', __name__)
+#api = Blueprint('api', __name__)
+#moved to extensions
 
 class Block:
     def __init__(self, index, timestamp, data, previous_hash):

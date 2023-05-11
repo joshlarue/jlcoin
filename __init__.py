@@ -12,8 +12,7 @@ def create_app():
     app.config['SECRET_KEY'] = 'jlcoin'
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
     CORS(app)
-
-    from routes import api
+    from extensions import api
     app.register_blueprint(api)
 
     with app.app_context():
@@ -25,7 +24,7 @@ def create_app():
     login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
 
-    from .auth import auth
+    from auth import auth
     app.register_blueprint(auth, url_prefix='/auth')
 
     @login_manager.user_loader
