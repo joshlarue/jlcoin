@@ -10,11 +10,22 @@ h1 {
     padding-left: 20px;
 }
 
-a {
+.descript {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: #002c58;
+}
+
+.lr {
     display: inline-block;
     margin: 10px;
     padding: 10px 20px;
     text-decoration: none;
+    background-color: rgb(87, 123, 255);
     color: black;
     border: 2px solid white;
     border-radius: 5px;
@@ -24,9 +35,10 @@ a {
     right: 10px;
 }
 
-a:hover {
+.lr:hover {
     border-color: #ffffff;
     color: #ffffff;
+    background-color: #4da6ff;
 }
 
 a[href="/auth/register"] {
@@ -34,5 +46,45 @@ a[href="/auth/register"] {
 }
 
 a[href="/auth/login"] {
-    right: 150px;
+    right: 125px;
+}
+
+form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+form input {
+    width: 93%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #6699CC;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #275f97;
 }
