@@ -8,13 +8,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>jlcoin</h1> <!-- make upper left aligned -->
+    <h1>Dashboard</h1> <!-- make upper left aligned -->
     {% if current_user.is_authenticated %}
         <h1>Welcome, {{ current_user.username }}!</h1>
     {% else %}
         <h1>Welcome! Please log in or register.</h1>
     {% endif %}
-    <p><a href="/auth/logout">Logout</a></p>
+    <div id="auth">
+        <a class = "auth-links" href="/auth/logout">Log Out</a> <!-- make login and register buttons on the upper right hand side -->
+    </div>
     <h2>Initiate Transaction</h2> <!-- make popdown form -->
     <button id="transaction-btn">Create Transaction</button>
     <div id="transaction-form-wrapper" style="display: none;">

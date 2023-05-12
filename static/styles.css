@@ -1,5 +1,5 @@
 body {
-    background-color: #1d2e3e;
+    background-color: #001220;
     margin: 0;
     padding: 0;
     font-family: 'Source Sans Pro', sans-serif;
@@ -7,7 +7,7 @@ body {
 
 h1 {
     text-align: left;
-    padding-left: 20px;
+    padding-left: 30px;
     color: #cecece;
     font-family: 'Source Sans Pro', sans-serif;
 }
@@ -32,28 +32,32 @@ h1 {
 
 .auth-links {
     display: inline-block;
-    background-color: #544caf;
+    background-color: #672bfd;
     color: white;
-    border: 1px solid #254ca1;
+    border: 1px solid #000000;
     padding: 10px 20px;
     margin: 5px;
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.2s;
 }
 
 .auth-links:hover {
-    border-color: #ffffff;
     color: #ffffff;
-    background-color: #4da6ff;
+    background-color: #251964;
 }
 
 form {
     font-family: 'Source Sans Pro', sans-serif;
     width: 300px;
     margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     padding: 20px;
-    background-color: #f0f0f0;
+    background-color: #000d17;
     border-radius: 10px;
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
 }
@@ -62,6 +66,7 @@ form label {
     display: block;
     margin-bottom: 10px;
     font-size: 0.9em;
+    color: #fff;
 }
 
 form input {
@@ -77,7 +82,7 @@ form button {
     width: 100%;
     padding: 10px;
     border: none;
-    background-color: #6699CC;
+    background-color: #001d3a;
     color: #fff;
     border-radius: 5px;
     font-size: 1em;
@@ -87,4 +92,11 @@ form button {
 
 form button:hover {
     background-color: #275f97;
+}
+
+.svg-background {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
 }
