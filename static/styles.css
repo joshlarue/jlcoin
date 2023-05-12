@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Source Sans Pro', sans-serif;
+    color: #cecece;
 }
 
 h1 {
@@ -10,6 +11,18 @@ h1 {
     padding-left: 30px;
     color: #cecece;
     font-family: 'Source Sans Pro', sans-serif;
+}
+
+#actions-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 50px;    
+}
+
+#transaction-section, #mine-section {
+    text-align: center;
+    width: 100%;
 }
 
 #description {
@@ -34,7 +47,6 @@ h1 {
     display: inline-block;
     background-color: #672bfd;
     color: white;
-    border: 1px solid #000000;
     padding: 10px 20px;
     margin: 5px;
     text-decoration: none;
@@ -47,15 +59,27 @@ h1 {
     background-color: #251964;
 }
 
+.mine-txion {
+    display: inline-block;
+    background-color: #743dff;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.mine-txion:hover {
+    color: #ffffff;
+    background-color: #1b104f;
+}
+
 form {
     font-family: 'Source Sans Pro', sans-serif;
     width: 300px;
     margin: 0 auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    position: relative;
     padding: 20px;
     background-color: #000d17;
     border-radius: 10px;

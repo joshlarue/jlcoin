@@ -148,3 +148,7 @@ def index():
     #    return render_template('index.html', username=current_user.username)
     #else:
     #    return redirect(url_for('auth.register'))
+
+@main.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')

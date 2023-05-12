@@ -34,7 +34,7 @@ def login():
         user = User.query.filter_by(username=username).first()
         if user and user.check_password(password):
             login_user(user)
-            return render_template('dashboard.html')
+            return redirect(url_for('main.dashboard'))
         flash('Wrong username or password. I cannot tell you which one is wrong.')
     return render_template('login.html')
 
@@ -43,4 +43,4 @@ def login():
 def logout():
     logout_user()
     #originally url_for index
-    return render_template('index.html')
+    return redirect(url_for('main.index'))

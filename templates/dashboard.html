@@ -17,85 +17,91 @@
     <div id="auth">
         <a class = "auth-links" href="/auth/logout">Log Out</a> <!-- make login and register buttons on the upper right hand side -->
     </div>
-    <h2>Initiate Transaction</h2> <!-- make popdown form -->
-    <button id="transaction-btn">Create Transaction</button>
-    <div id="transaction-form-wrapper" style="display: none;">
-        <form id="transaction-form">
-            <label for="from">From:</label>
-            <input type="text" id="from" name="from" required><br><br>
-            <label for="to">To:</label>
-            <input type="text" id="to" name="to" required><br><br>
-            <label for="amount">Amount:</label>
-            <input type="number" id="amount" name="amount" required><br><br>
-            <button type="submit">Submit Transaction</button>
-        </form>
+    <div id="actions-container">
+        <div id="mine-section">
+            <button class ="mine-txion" id="mine-btn">Mine a Block</button>
+            <div id="mine-info" style="display: none;"></div>
+            <script>
+                $('#mine-btn').click(function() {
+                    var $transactionFormWrapper = $('#mine-info');
+                    if ($transactionFormWrapper.is(":visible")) {
+                        $transactionFormWrapper.slideUp(300);
+                    } else {
+                        $transactionFormWrapper.slideDown(300);
+                    }
+                });
+            </script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                const serverURL = 'http://127.0.0.1:5000'
+                $('#transaction-form').on('submit', function (e) {
+                    e.preventDefault();
+                    const transactionDATA = {
+                        from: $('#from').val(),
+                        to: $('#to').val(),
+                        amount: $('#amount').val()
+                    };
+
+                    $.ajax({
+                        type: 'POST',
+                        url: serverURL + '/txion',
+                        data: JSON.stringify(transactionDATA),
+                        contentType: 'application/json',
+                        dataType: 'json',
+                        success: function (response) {
+                            alert('Transaction successful!');
+                        },
+                        error: function (xhr, status, error) {
+                            alert('Error submitting transaction: ' + error);
+                        }
+                    });
+                });
+
+                $('#mine-btn').on('click', function () {
+                    $.ajax({
+                        type: 'GET',
+                        url: serverURL + '/mine',
+                        dataType: 'json',
+                        success: function (response) {
+                            $('#mine-info').html('Block mined! Block index: ' + response.index);
+                            $('#mine-info').show();
+                        },
+                        error: function (xhr, status, error) {
+                            alert('Error mining block: ' + error);
+                        }
+                    });
+                });
+            </script>
+        </div>
+        
+        <div id="transaction-section">
+            <button class="mine-txion" id="transaction-btn">Initiate Transaction</button>
+            <div id="transaction-form-wrapper" style="display: none;">
+                <form id="transaction-form">
+                    <label for="from">From:</label>
+                    <input type="text" id="from" name="from" required><br><br>
+                    <label for="to">To:</label>
+                    <input type="text" id="to" name="to" required><br><br>
+                    <label for="amount">Amount:</label>
+                    <input type="number" id="amount" name="amount" required><br><br>
+                    <button type="submit">Submit Transaction</button>
+                </form>
+            </div>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $('#transaction-btn').click(function() {
+                    var $transactionFormWrapper = $('#transaction-form-wrapper');
+                    if ($transactionFormWrapper.is(":visible")) {
+                        $transactionFormWrapper.slideUp(200);
+                    } else {
+                        $transactionFormWrapper.slideDown(200);
+                    }
+                });
+            </script>
+        </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $('#transaction-btn').click(function() {
-            var $transactionFormWrapper = $('#transaction-form-wrapper');
-            if ($transactionFormWrapper.is(":visible")) {
-                $transactionFormWrapper.slideUp(300);
-            } else {
-                $transactionFormWrapper.slideDown(300);
-            }
-        });
-    </script>
-
-    <br>
-    <h2>Mine</h2> <!-- make popdown info box -->
-    <button id="mine-btn">Mine a Block</button>
-    <div id="mine-info" style="display: none;"></div>
-    <script>
-        $('#mine-btn').click(function() {
-            var $transactionFormWrapper = $('#mine-info');
-            if ($transactionFormWrapper.is(":visible")) {
-                $transactionFormWrapper.slideUp(300);
-            } else {
-                $transactionFormWrapper.slideDown(300);
-            }
-        });
-    </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        const serverURL = 'http://127.0.0.1:5000'
-        $('#transaction-form').on('submit', function (e) {
-            e.preventDefault();
-            const transactionDATA = {
-                from: $('#from').val(),
-                to: $('#to').val(),
-                amount: $('#amount').val()
-            };
-
-            $.ajax({
-                type: 'POST',
-                url: serverURL + '/txion',
-                data: JSON.stringify(transactionDATA),
-                contentType: 'application/json',
-                dataType: 'json',
-                success: function (response) {
-                    alert('Transaction successful!');
-                },
-                error: function (xhr, status, error) {
-                    alert('Error submitting transaction: ' + error);
-                }
-            });
-        });
-
-        $('#mine-btn').on('click', function () {
-            $.ajax({
-                type: 'GET',
-                url: serverURL + '/mine',
-                dataType: 'json',
-                success: function (response) {
-                    $('#mine-info').html('Block mined! Block index: ' + response.index);
-                    $('#mine-info').show();
-                },
-                error: function (xhr, status, error) {
-                    alert('Error mining block: ' + error);
-                }
-            });
-        });
-    </script>
+    <div class="svg-background">
+        <object id="svg-object" data="/static/waves.svg" type="image/svg+xml"></object>
+    </div>
 </body>
 </html>
